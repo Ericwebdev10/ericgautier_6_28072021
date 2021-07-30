@@ -6,13 +6,18 @@ exports.createSauce = (req, res, next) => {
 	delete sauceObject._id;
 	const sauce = new Sauce({
 		...sauceObject,
-		imageUrl: `${req.protocol}://${req.get("host")}/images/${
+		imageUrl: `${req.protocol}://${req.get("host")}/images/${ //get image URL after multer https://openclassrooms.com/fr/courses/6390246-passez-au-full-stack-avec-node-js-express-et-mongodb/6466669-modifiez-les-routes-pour-prendre-en-compte-les-fichiers
 			req.file.filename
 		}`,
+
+/*		likes: 0,	//initialize counters and user lists
+        dislikes: 0,
+        usersLiked: [],
+        usersDisliked: []*/
 	});
 	sauce
 		.save()
-		.then(() => res.status(201).json({ message: "Objet enregistré !" }))
+		.then(() => res.status(201).json({ message: "Sauce saved !" }))
 		.catch((error) => res.status(400).json({ error }));
 };
 
@@ -43,7 +48,7 @@ exports.modifySauce = (req, res, next) => {
 		{ _id: req.params.id },
 		{ ...sauceObject, _id: req.params.id }
 	)
-		.then(() => res.status(200).json({ message: "Objet modifié !" }))
+		.then(() => res.status(200).json({ message: "Sauce modified !" }))
 		.catch((error) => res.status(400).json({ error }));
 };
 
@@ -54,7 +59,7 @@ exports.deleteSauce = (req, res, next) => {
 			fs.unlink(`images/${filename}`, () => {
 				Sauce.deleteOne({ _id: req.params.id })
 					.then(() =>
-						res.status(200).json({ message: "Objet supprimé !" })
+						res.status(200).json({ message: "Sauce deleted !" })
 					)
 					.catch((error) => res.status(400).json({ error }));
 			});

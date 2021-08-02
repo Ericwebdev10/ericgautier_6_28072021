@@ -1,5 +1,5 @@
 const Sauce = require("../models/sauce");
-const fs = require("fs");
+const fs = require("fs"); //https://openclassrooms.com/fr/courses/6390246-passez-au-full-stack-avec-node-js-express-et-mongodb/6466697-developpez-la-fonction-delete-du-back-end
 
 exports.createSauce = (req, res, next) => {
 	const sauceObject = JSON.parse(req.body.sauce);

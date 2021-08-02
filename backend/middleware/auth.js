@@ -16,3 +16,4 @@ module.exports = (req, res, next) => {
 		});
 	}
 };
+//https://openclassrooms.com/fr/courses/6390246-passez-au-full-stack-avec-node-js-express-et-mongodb/6466557-creez-des-tokens-dauthentification

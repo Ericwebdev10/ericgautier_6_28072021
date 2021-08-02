@@ -21,6 +21,7 @@ Install the following tools :
 - npm install --save bcrypt
 - npm install --save jsonwebtoken
 - npm install password-validator
+- npm install --save express-rate-limit
 
 Fill the following keys in .env file :
 DB_USER=

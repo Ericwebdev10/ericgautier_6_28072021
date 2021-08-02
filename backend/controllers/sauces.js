@@ -83,9 +83,9 @@ exports.updateLikeDislike = (req, res, next) => {
 	let userId = req.body.userId;
 	let sauceId = req.params.id;
 
-	console.log(likeValue); //debug to delete
-	console.log(userId); //debug to delete
-	console.log(sauceId); //debug to delete
+//	console.log(likeValue); //debug to delete
+//	console.log(userId); //debug to delete
+//	console.log(sauceId); //debug to delete
 	
 	if (likeValue === 1) {
 		// if like => push userid and update counter

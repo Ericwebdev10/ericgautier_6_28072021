@@ -3,12 +3,21 @@ const jwt = require("jsonwebtoken");
 
 const User = require("../models/user");
 
+//mask email content
+const MaskData = require("maskdata");//https://www.npmjs.com/package/maskdata
+const emailMask2Options = {
+    maskWith: "*", 
+    unmaskedStartCharactersBeforeAt: 5,
+    unmaskedEndCharactersAfterAt: 2,
+    maskAtTheRate: false
+};
+
 exports.signup = (req, res, next) => {
 	bcrypt
 		.hash(req.body.password, 10)
 		.then((hash) => {
 			const user = new User({
-				email: req.body.email,
+				email: MaskData.maskEmail2(req.body.email,emailMask2Options),
 				password: hash,
 			});
 			user.save()
@@ -19,7 +28,7 @@ exports.signup = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-	User.findOne({ email: req.body.email })
+	User.findOne({ email: MaskData.maskEmail2(req.body.email,emailMask2Options) })
 		.then((user) => {
 			if (!user) {
 				return res.status(401).json({ error: "User not found !" });

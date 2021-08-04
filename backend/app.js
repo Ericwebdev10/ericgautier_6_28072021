@@ -14,6 +14,9 @@ const userRoutes = require("./routes/user");
 //Helmet helps to secure Express apps by setting various HTTP headers
 const helmet = require("helmet"); //https://www.npmjs.com/package/helmet
 
+//middleware which sanitizes user-supplied data to prevent MongoDB Operator Injection.
+const mongoSanitize = require('express-mongo-sanitize');//https://www.npmjs.com/package/express-mongo-sanitize
+
 mongoose
 	.connect(
 		"mongodb+srv://" +
@@ -30,6 +33,7 @@ mongoose
 
 const app = express();
 app.use(helmet());
+app.use(mongoSanitize());
 
 //Cross Origin Resource Sharing (CORS) is a W3C standard that allows a server to relax the same-origin policy. Using CORS, a server can explicitly allow some cross-origin requests while rejecting others.
 app.use((req, res, next) => {

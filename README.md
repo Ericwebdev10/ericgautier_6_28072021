@@ -26,12 +26,12 @@
 - express-mongo-sanitize to sanitizes user-supplied data to prevent MongoDB Operator Injection.
 
 
-
 ### How to use this repo : 
 
 #frontend#
 
 1- Clone the repository. (Repo created by OC)
+
 2- Prerequisite :
 - Install nodeJS 14.17.3 	https://nodejs.org/en/download/
 - Start VSC as administrator
@@ -43,6 +43,7 @@
 #backend#
 
 1- Clone the repository.
+
 2- Prerequisite :
 - Npm init => entry point: (index.js) server.js
 - npm install --save express
